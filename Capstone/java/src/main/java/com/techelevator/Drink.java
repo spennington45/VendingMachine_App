@@ -6,6 +6,11 @@ import java.util.Map;
 
 public class Drink implements MasterItemType {
 
+		@Override
+	public String toString() {
+		return "Drink [item=" + item + ", slot=" + slot + ", quantity=" + quantity + ", name=" + name + "]";
+	}
+
 		private Map <String, BigDecimal> item = new HashMap <String, BigDecimal> ();
 		private String slot;
 		private int quantity = 5;

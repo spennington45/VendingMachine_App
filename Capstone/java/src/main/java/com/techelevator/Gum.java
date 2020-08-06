@@ -24,6 +24,11 @@ public class Gum implements MasterItemType {
 	}
 
 	@Override
+	public String toString() {
+		return "Gum [item=" + item + ", slot=" + slot + ", quantity=" + quantity + ", name=" + name + "]";
+	}
+
+	@Override
 	public String getSlot() {
 		// TODO Auto-generated method stub
 		return slot;

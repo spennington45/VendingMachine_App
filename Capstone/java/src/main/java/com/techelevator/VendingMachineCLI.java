@@ -22,7 +22,7 @@ public class VendingMachineCLI {
 
 	private static final String [] PURCHESE_MENU = {"Feed Money", "Select Product", "Finish Transaction", "Back"};
 	private static final String [] MONEY_MENU = {"$1.00", "$2.00", "$5.00", "$10.00", "Back"};
-	private static final String [] SELECT_PRODUCT = {"Chips", "Candy", "Drinks", "Gum", "Back"};
+	private static final String [] SELECT_PRODUCT = {"Chip", "Candy", "Drink", "Gum", "Back"};
 	private static final String [] SELECT_CHIP = {"Potato Crisps", "Stackers", "Grain Waves", "Cloud Popcorn", "Back"};
 	private Menu menu;
 	private CustomerBalance customer = new CustomerBalance();
@@ -78,7 +78,10 @@ public class VendingMachineCLI {
 		while (!itemSelected.equals("Back")) {
 			if (itemSelected.equals("Chip")) {
 				chipSelected = (String) menu.getChoiceFromOptions(SELECT_CHIP);
-				item.addItemToPerchase(chipSelected);
+				if (!chipSelected.contentEquals("Back")) {
+					System.out.println("Do stuff2222");
+					item.addItemToPerchase(chipSelected);
+				}
 			} else if (itemSelected.equals("Candy")) {
 				System.out.println("Do stuff");
 			} else if (itemSelected.equals("Drink")) {
