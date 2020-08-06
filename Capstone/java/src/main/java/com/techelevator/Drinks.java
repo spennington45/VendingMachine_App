@@ -13,7 +13,6 @@ public class Drinks implements MasterItemType {
 
 		public Drinks(Map<String, BigDecimal> item, String slot, String name, BigDecimal price) {
 			this.slot = slot;
-			
 			this.item.put(name,price);
 			this.name = name;
 		}
@@ -33,7 +32,7 @@ public class Drinks implements MasterItemType {
 		@Override
 		public int getQuantity() {
 			// TODO Auto-generated method stub
-			return 0;
+			return quantity;
 		}
 
 		@Override

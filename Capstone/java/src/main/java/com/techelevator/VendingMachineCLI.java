@@ -21,7 +21,6 @@ public class VendingMachineCLI {
 
 	private static final String [] PURCHESE_MENU = {"Feed Money", "Select Product", "Back"};
 	private static final String [] MONEY_MENU = {"$1.00", "$2.00", "$5.00", "$10.00", "Back"};
-//	private static final List <String> SELECT_PRODUCT = readProducts();
 	private Menu menu;
 	CustomerBalance myBalance = new CustomerBalance();
 	CustomerBalance balanceForLog = new CustomerBalance();
