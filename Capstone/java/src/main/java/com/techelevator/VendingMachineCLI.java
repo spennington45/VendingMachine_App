@@ -84,36 +84,6 @@ public class VendingMachineCLI {
 		
 	}
 	
-	public class CustomerBalance {
 
-		private BigDecimal currentBalance =  new BigDecimal(0);
-		private BigDecimal zeroBalance = new BigDecimal(0);
-
-		public BigDecimal getCurrentBalance() {
-			return currentBalance;
-		}
-
-		public void addToCurrentBalance(BigDecimal addAmount) {
-			currentBalance = currentBalance.add(addAmount);
-		}
-
-		public void subFromCurrentBalance(BigDecimal subAmount) {
-			if (subAmount.doubleValue() <= currentBalance.doubleValue()) {
-				currentBalance = currentBalance.subtract(subAmount);
-			}
-		}
-
-		public void returnToZero() {
-		currentBalance = zeroBalance;
-		}
-
-		public String toString() {
-			return "$" + getCurrentBalance() + " remaining";
-		}
-
-		public String formatBalanceToCurrency() {
-			NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.US);
-			return numberFormat.format(currentBalance.doubleValue());
-		}
-	}
+	
 }
