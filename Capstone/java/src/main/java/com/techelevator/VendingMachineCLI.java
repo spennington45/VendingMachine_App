@@ -87,6 +87,7 @@ public class VendingMachineCLI {
 				System.out.println("Do stuff");
 			}
 		}
+	}
 
 	private void finishTransaction() throws FileNotFoundException {
 		System.out.flush();  
