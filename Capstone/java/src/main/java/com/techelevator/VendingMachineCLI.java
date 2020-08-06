@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -27,7 +25,7 @@ public class VendingMachineCLI {
 	private Menu menu;
 	CustomerBalance myBalance = new CustomerBalance();
 	CustomerBalance balanceForLog = new CustomerBalance();
-	String dateTime = (LocalDate.now() + " " + LocalTime.now());
+	
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -114,6 +112,9 @@ public class VendingMachineCLI {
 			return "$" + getCurrentBalance() + " remaining";
 		}
 
-
+		public String formatBalanceToCurrency() {
+			NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.US);
+			return numberFormat.format(currentBalance.doubleValue());
+		}
 	}
 }
