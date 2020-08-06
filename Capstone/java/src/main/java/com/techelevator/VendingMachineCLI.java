@@ -57,7 +57,7 @@ public class VendingMachineCLI {
 			} else if (purchaseMenuOption.equals("Select Product")) {
 				selectProduct();
 			} else if (purchaseMenuOption.equals("Finish Transaction")) {
-				//finishTransaction();
+				finishTransaction();
 			}
 		}
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
