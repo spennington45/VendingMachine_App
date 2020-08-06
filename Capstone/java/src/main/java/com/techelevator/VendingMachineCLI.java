@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
@@ -62,6 +63,7 @@ public class VendingMachineCLI {
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 	}
 
+
 	private void selectProduct() throws FileNotFoundException {
 		SelectedItems item = new SelectedItems();
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
@@ -85,7 +87,17 @@ public class VendingMachineCLI {
 				System.out.println("Do stuff");
 			}
 		}
+
+	private void finishTransaction() throws FileNotFoundException {
+		System.out.flush();  
+		CustomerBalance finalBalance = new CustomerBalance();
+		customer.getCurrentBalance();
+        System.out.println("$" + customer.getCurrentBalance());
+    	System.out.flush();  
+        run();
+		
 	}
+
 
 	private void processMoneyFeed() {
 		String feedOptions = "";
