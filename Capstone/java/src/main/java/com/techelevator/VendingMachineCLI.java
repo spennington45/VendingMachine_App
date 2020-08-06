@@ -2,8 +2,13 @@ package com.techelevator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 import com.techelevator.view.Menu;
@@ -20,6 +25,9 @@ public class VendingMachineCLI {
 	private static final String [] MONEY_MENU = {"$1.00", "$2.00", "$5.00", "$10.00", "Back"};
 //	private static final List <String> SELECT_PRODUCT = readProducts();
 	private Menu menu;
+	CustomerBalance myBalance = new CustomerBalance();
+	CustomerBalance balanceForLog = new CustomerBalance();
+	String dateTime = (LocalDate.now() + " " + LocalTime.now());
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -76,5 +84,36 @@ public class VendingMachineCLI {
 		for (String i : readList) {
 			System.out.println(i);
 		}
+		
+	}
+	
+	public class CustomerBalance {
+
+		private BigDecimal currentBalance =  new BigDecimal(0);
+		private BigDecimal zeroBalance = new BigDecimal(0);
+
+		public BigDecimal getCurrentBalance() {
+			return currentBalance;
+		}
+
+		public void addToCurrentBalance(BigDecimal addAmount) {
+			currentBalance = currentBalance.add(addAmount);
+		}
+
+		public void subFromCurrentBalance(BigDecimal subAmount) {
+			if (subAmount.doubleValue() <= currentBalance.doubleValue()) {
+				currentBalance = currentBalance.subtract(subAmount);
+			}
+		}
+
+		public void returnToZero() {
+		currentBalance = zeroBalance;
+		}
+
+		public String toString() {
+			return "$" + getCurrentBalance() + " remaining";
+		}
+
+
 	}
 }
