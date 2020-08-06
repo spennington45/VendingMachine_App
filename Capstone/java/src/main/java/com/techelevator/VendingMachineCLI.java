@@ -50,7 +50,11 @@ public class VendingMachineCLI {
 			purchaseMenuOption = (String) menu.getChoiceFromOptions(PURCHESE_MENU);
 			if (purchaseMenuOption.equals("Feed Money")) {
 				processMoneyFeed();
-			} 
+			} else if (purchaseMenuOption.equals("Select Product")) {
+				selectProduct();
+			} else if (purchaseMenuOption.equals("Finish Transaction")) {
+				finishTransaction();
+			}
 		}
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 	}
