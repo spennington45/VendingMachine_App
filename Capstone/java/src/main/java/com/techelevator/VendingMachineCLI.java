@@ -24,6 +24,9 @@ public class VendingMachineCLI {
 	private static final String [] MONEY_MENU = {"$1.00", "$2.00", "$5.00", "$10.00", "Back"};
 	private static final String [] SELECT_PRODUCT = {"Chip", "Candy", "Drink", "Gum", "Back"};
 	private static final String [] SELECT_CHIP = {"Potato Crisps", "Stackers", "Grain Waves", "Cloud Popcorn", "Back"};
+	private static final String [] SELECT_CANDY = {"Moonpie", "Cowtales", "Wonka Bar", "Crunchie", "Back"};
+	private static final String [] SELECT_DRINK = {"Cola", "Dr. Salt", "Mountain Melter", "Heavy", "Back"};
+	private static final String [] SELECT_GUM = {"U-Chews", "Little League Chew", "Chiclets", "Triplemint", "Back"};
 	private Menu menu;
 	private CustomerBalance customer = new CustomerBalance();
 	private List <String> selectedItems = new ArrayList <String> ();
@@ -57,7 +60,7 @@ public class VendingMachineCLI {
 			} else if (purchaseMenuOption.equals("Select Product")) {
 				selectProduct();
 			} else if (purchaseMenuOption.equals("Finish Transaction")) {
-				//finishTransaction();
+				finishTransaction();
 			}
 		}
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
@@ -79,15 +82,23 @@ public class VendingMachineCLI {
 			if (itemSelected.equals("Chip")) {
 				chipSelected = (String) menu.getChoiceFromOptions(SELECT_CHIP);
 				if (!chipSelected.contentEquals("Back")) {
-					System.out.println("Do stuff2222");
 					item.addItemToPerchase(chipSelected);
 				}
 			} else if (itemSelected.equals("Candy")) {
-				System.out.println("Do stuff");
+				candySelected = (String) menu.getChoiceFromOptions(SELECT_CANDY);
+				if (!chipSelected.contentEquals("Back")) {
+					item.addItemToPerchase(chipSelected);
+				}
 			} else if (itemSelected.equals("Drink")) {
-				System.out.println("Do stuff");
+				drinkSelected = (String) menu.getChoiceFromOptions(SELECT_DRINK);
+				if (!chipSelected.contentEquals("Back")) {
+					item.addItemToPerchase(chipSelected);
+				}
 			} else if (itemSelected.equals("Gum")) {
-				System.out.println("Do stuff");
+				gumSelected = (String) menu.getChoiceFromOptions(SELECT_GUM);
+				if (!chipSelected.contentEquals("Back")) {
+					item.addItemToPerchase(chipSelected);
+				}
 			}
 		}
 	}
