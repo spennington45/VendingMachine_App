@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Chips implements MasterItemType {
+public class Chip implements MasterItemType {
 
 	private Map <String, BigDecimal> item = new HashMap <String, BigDecimal> ();
 	private String slot;
@@ -13,7 +13,7 @@ public class Chips implements MasterItemType {
 
 	
 
-	public Chips(String slot, String name, BigDecimal price) {
+	public Chip(String slot, String name, BigDecimal price) {
 		this.slot = slot;
 		this.item.put(name,price);
 		this.name = name;

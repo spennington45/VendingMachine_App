@@ -21,8 +21,11 @@ public class VendingMachineCLI {
 
 	private static final String [] PURCHESE_MENU = {"Feed Money", "Select Product", "Finish Transaction", "Back"};
 	private static final String [] MONEY_MENU = {"$1.00", "$2.00", "$5.00", "$10.00", "Back"};
+	private static final String [] SELECT_PRODUCT = {"Chips", "Candy", "Drinks", "Gum", "Back"};
+	private static final String [] SELECT_CHIP = {"Potato Crisps", "Stackers", "Grain Waves", "Cloud Popcorn", "Back"};
 	private Menu menu;
-	CustomerBalance customer = new CustomerBalance();
+	private CustomerBalance customer = new CustomerBalance();
+	private List <String> selectedItems = new ArrayList <String> ();
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -44,7 +47,7 @@ public class VendingMachineCLI {
 		}
 	}
 
-	private void processPurchaseMenuOption() {
+	private void processPurchaseMenuOption() throws FileNotFoundException {
 		String purchaseMenuOption = "";
 		while (!purchaseMenuOption.equals("Back")) {
 			purchaseMenuOption = (String) menu.getChoiceFromOptions(PURCHESE_MENU);
@@ -53,10 +56,35 @@ public class VendingMachineCLI {
 			} else if (purchaseMenuOption.equals("Select Product")) {
 				selectProduct();
 			} else if (purchaseMenuOption.equals("Finish Transaction")) {
-				finishTransaction();
+				//finishTransaction();
 			}
 		}
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
+	}
+
+	private void selectProduct() throws FileNotFoundException {
+		SelectedItems item = new SelectedItems();
+		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
+		System.out.println("Please enter the code for the item you wish to perchis");
+		item.getInventory();
+		String itemSelected = "";
+		String chipSelected = "";
+		String candySelected = "";
+		String drinkSelected = "";
+		String gumSelected = "";
+		itemSelected = (String) menu.getChoiceFromOptions(SELECT_PRODUCT);
+		while (!itemSelected.equals("Back")) {
+			if (itemSelected.equals("Chip")) {
+				chipSelected = (String) menu.getChoiceFromOptions(SELECT_CHIP);
+				item.addItemToPerchase(chipSelected);
+			} else if (itemSelected.equals("Candy")) {
+				System.out.println("Do stuff");
+			} else if (itemSelected.equals("Drink")) {
+				System.out.println("Do stuff");
+			} else if (itemSelected.equals("Gum")) {
+				System.out.println("Do stuff");
+			}
+		}
 	}
 
 	private void processMoneyFeed() {

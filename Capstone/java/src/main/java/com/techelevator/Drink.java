@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Drinks implements MasterItemType {
+public class Drink implements MasterItemType {
 
 		private Map <String, BigDecimal> item = new HashMap <String, BigDecimal> ();
 		private String slot;
 		private int quantity = 5;
 		private String name;
 
-		public Drinks(Map<String, BigDecimal> item, String slot, String name, BigDecimal price) {
+		public Drink(Map<String, BigDecimal> item, String slot, String name, BigDecimal price) {
 			this.slot = slot;
 			this.item.put(name,price);
 			this.name = name;
