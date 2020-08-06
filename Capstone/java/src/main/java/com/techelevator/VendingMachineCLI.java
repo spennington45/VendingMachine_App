@@ -19,12 +19,10 @@ public class VendingMachineCLI {
 
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
 
-	private static final String [] PURCHESE_MENU = {"Feed Money", "Select Product", "Back"};
+	private static final String [] PURCHESE_MENU = {"Feed Money", "Select Product", "Finish Transaction", "Back"};
 	private static final String [] MONEY_MENU = {"$1.00", "$2.00", "$5.00", "$10.00", "Back"};
 	private Menu menu;
-	CustomerBalance myBalance = new CustomerBalance();
-	CustomerBalance balanceForLog = new CustomerBalance();
-	
+	CustomerBalance customer = new CustomerBalance();
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -36,7 +34,9 @@ public class VendingMachineCLI {
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				readProducts();
+				System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+				System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 				processPurchaseMenuOption();
 			} else {
 				System.exit(0);
@@ -52,13 +52,20 @@ public class VendingMachineCLI {
 				processMoneyFeed();
 			} 
 		}
+		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 	}
 
 	private void processMoneyFeed() {
 		String feedOptions = "";
 		while (!feedOptions.equals("Back")) {
-			feedOptions = (String) menu.getChoiceFromOptions(MONEY_MENU);					
+			feedOptions = (String) menu.getChoiceFromOptions(MONEY_MENU);	
+			if (!feedOptions.equals("Back")) {
+				BigDecimal x = BigDecimal.valueOf(Double.parseDouble(feedOptions.replace("$", "")));
+				customer.addToCurrentBalance(x.setScale(2));
+				System.out.println("Current Money Provided: $" + customer.getCurrentBalance());				
+			}
 		}
+		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
