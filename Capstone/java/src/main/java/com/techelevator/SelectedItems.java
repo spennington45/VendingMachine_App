@@ -27,7 +27,7 @@ public class SelectedItems {
 				while (fileScanner.hasNextLine()) {
 					String tempItem = fileScanner.nextLine();
 					String [] item = tempItem.split("\\|");
-					for (int i = 0; i < item.length; i++) {
+			//	for (int i = 0; i < item.length; i++) {
 						BigDecimal y = BigDecimal.valueOf(Double.parseDouble(item[2]));
 						if (item[3].equals("Chip")) {
 							Chip chip = new Chip(item[0], item[1], y);	
@@ -49,9 +49,10 @@ public class SelectedItems {
 					}
 				}
 			} 
-		}
 		return readList;
-	}
+		}
+		
+	
 	
 	public void addItemToPerchase(String str) {
 		System.out.println(str);
@@ -62,7 +63,6 @@ public class SelectedItems {
 						selectedItems.add(i.getName());
 						System.out.println(total);
 						System.out.println(selectedItems.toString());
-					
 				}
 			}if (str.equals("Candy")) {
 				System.out.println("Do stuff");

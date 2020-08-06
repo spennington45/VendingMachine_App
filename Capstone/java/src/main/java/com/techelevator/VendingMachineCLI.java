@@ -74,8 +74,8 @@ public class VendingMachineCLI {
 		String candySelected = "";
 		String drinkSelected = "";
 		String gumSelected = "";
-		itemSelected = (String) menu.getChoiceFromOptions(SELECT_PRODUCT);
 		while (!itemSelected.equals("Back")) {
+			itemSelected = (String) menu.getChoiceFromOptions(SELECT_PRODUCT);
 			if (itemSelected.equals("Chip")) {
 				chipSelected = (String) menu.getChoiceFromOptions(SELECT_CHIP);
 				if (!chipSelected.contentEquals("Back")) {
