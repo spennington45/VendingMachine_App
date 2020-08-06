@@ -32,15 +32,19 @@ public class SelectedItems {
 						if (item[3].equals("Chip")) {
 							Chip chip = new Chip(item[0], item[1], y);	
 							readList.add(chip);
+							System.out.println(chip);
 						} else if (item[3].equals("Candy")) {
 							Candy candy = new Candy(item[0], item[1], y);
 							readList.add(candy);
+							System.out.println(candy);
 						} else if (item[3].equals("Drink")) {
 							Chip drink = new Chip(item[0], item[1], y);	
 							readList.add(drink);
+							System.out.println(drink);
 						} else if (item[3].equals("Gum")) {
 							Chip gum = new Chip(item[0], item[1], y);
 							readList.add(gum);
+							System.out.println(gum);
 						}
 					}
 				}
@@ -50,29 +54,25 @@ public class SelectedItems {
 	}
 	
 	public void addItemToPerchase(String str) {
-		String itemSelected = "";
-		String chipSelected = "";
-		String candySelected = "";
-		String drinkSelected = "";
-		String gumSelected = "";
-		while (!itemSelected.equals("Back")) {
-			if (itemSelected.equals("Chip")) {
+		System.out.println(str);
+			
 				for (MasterItemType i : readList) {
-					if (i.getName().equals(itemSelected)) {
+					if (i.getName().equals(str)) {
 						total.add(i.getPrice());
 						selectedItems.add(i.getName());
-					}
+						System.out.println(total);
+						System.out.println(selectedItems.toString());
+					
 				}
-				chipSelected = (String) menu.getChoiceFromOptions(SELECT_CHIP);
-			} else if (itemSelected.equals("Candy")) {
+			}if (str.equals("Candy")) {
 				System.out.println("Do stuff");
-			} else if (itemSelected.equals("Drink")) {
+			} else if (str.equals("Drink")) {
 				System.out.println("Do stuff");
-			} else if (itemSelected.equals("Gum")) {
+			} else if (str.equals("Gum")) {
 				System.out.println("Do stuff");
 			}
 		}
-	}
+	
 	
 	public BigDecimal getTotal() {
 		return this.total;
