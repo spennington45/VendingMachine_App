@@ -32,13 +32,16 @@ public class VendingMachineCLI {
 	private List <String> selectedItems = new ArrayList <String> ();
 	static List <MasterItemType> inventory = new ArrayList <MasterItemType> ();
 	static SelectedItems item = new SelectedItems();
-	
+	public BigDecimal x = new BigDecimal(0.00);
+	LogFile log = new LogFile();
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 	}
 
 	public void run() throws FileNotFoundException {
 		while (true) {
+			
+			log.receipt("Starting VEND-O-MATIC 9000");
 
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
@@ -124,17 +127,18 @@ public class VendingMachineCLI {
 	}
 
 
-	private void processMoneyFeed() {
+	public void processMoneyFeed() {
 		String feedOptions = "";
 		while (!feedOptions.equals("Back")) {
 			feedOptions = (String) menu.getChoiceFromOptions(MONEY_MENU);	
 			if (!feedOptions.equals("Back")) {
-				BigDecimal x = BigDecimal.valueOf(Double.parseDouble(feedOptions.replace("$", "")));
+				x = BigDecimal.valueOf(Double.parseDouble(feedOptions.replace("$", "")));
 				customer.addToCurrentBalance(x.setScale(2));
 				System.out.println("Current Money Provided: $" + customer.getCurrentBalance());				
 			}
 		}
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
+		
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
