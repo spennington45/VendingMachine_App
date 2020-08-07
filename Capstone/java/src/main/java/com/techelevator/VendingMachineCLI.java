@@ -31,13 +31,15 @@ public class VendingMachineCLI {
 	private CustomerBalance customer = new CustomerBalance();
 	private List <String> selectedItems = new ArrayList <String> ();
 	static List <MasterItemType> inventory = new ArrayList <MasterItemType> ();
-
+	static SelectedItems item = new SelectedItems();
+	
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 	}
 
 	public void run() throws FileNotFoundException {
 		while (true) {
+
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
@@ -69,7 +71,6 @@ public class VendingMachineCLI {
 
 
 	private void selectProduct() throws FileNotFoundException {
-		SelectedItems item = new SelectedItems();
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 		System.out.println("Please enter the code for the item you wish to perchis");
 		String itemSelected = "";
@@ -87,17 +88,17 @@ public class VendingMachineCLI {
 			} else if (itemSelected.equals("Candy")) {
 				candySelected = (String) menu.getChoiceFromOptions(SELECT_CANDY);
 				if (!candySelected.contentEquals("Back")) {
-					item.addItemToPerchase(chipSelected);
+					item.addItemToPerchase(candySelected);
 				}
 			} else if (itemSelected.equals("Drink")) {
 				drinkSelected = (String) menu.getChoiceFromOptions(SELECT_DRINK);
 				if (!drinkSelected.contentEquals("Back")) {
-					item.addItemToPerchase(chipSelected);
+					item.addItemToPerchase(drinkSelected);
 				}
 			} else if (itemSelected.equals("Gum")) {
 				gumSelected = (String) menu.getChoiceFromOptions(SELECT_GUM);
 				if (!gumSelected.contentEquals("Back")) {
-					item.addItemToPerchase(chipSelected);
+					item.addItemToPerchase(gumSelected);
 				}
 			}
 		}
@@ -128,7 +129,6 @@ public class VendingMachineCLI {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
-		SelectedItems item = new SelectedItems();
 		item.getInventory();
 		SELECT_CHIP = item.getChipList();
 		SELECT_CANDY = item.getCandyList();

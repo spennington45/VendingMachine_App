@@ -51,7 +51,7 @@ public class SelectedItems {
 				}
 		
 			}
-			
+		System.out.println(readList.size());
 		chipList.add("Back");
 		candyList.add("Back");
 		drinkList.add("Back");
@@ -75,24 +75,19 @@ public class SelectedItems {
 	}
 	
 	public void addItemToPerchase(String str) {
-		System.out.println(str);
-		List <MasterItemType> tempList = readList;
-			for (MasterItemType i : tempList) {
-				
-					System.out.println("hrthrtthtrrht");
-					if (i.getName().equals(str)) {
-						total.add(i.getPrice(str));
-						selectedItems.add(i.getName());
-						System.out.println(i.getQuantity());
-						i.getQuantity();
-						i.quantityReduceBy1();
-						System.out.println(total);
-						System.out.println(selectedItems.toString());
-						System.out.println(i.getQuantity());
-					}
-				}
-						
-		}
+		for (MasterItemType i : this.readList) {
+			if (i.getName().equals(str)) {
+				total.add(i.getPrice(str));
+				selectedItems.add(i.getName());
+				System.out.println(i.getQuantity());
+				i.getQuantity();
+				i.quantityReduceBy1();
+				System.out.println(total);
+				System.out.println(selectedItems.toString());
+				System.out.println(i.getQuantity());
+			}
+		}				
+	}
 	
 	
 	public BigDecimal getTotal() {

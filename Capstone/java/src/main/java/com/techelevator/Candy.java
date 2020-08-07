@@ -46,8 +46,7 @@ public class Candy implements MasterItemType {
 
 	@Override
 	public BigDecimal getPrice(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return item.get(name);
 	}
 
 }
