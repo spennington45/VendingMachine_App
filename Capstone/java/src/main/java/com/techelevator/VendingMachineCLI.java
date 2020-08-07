@@ -49,7 +49,12 @@ public class VendingMachineCLI {
 				System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 				processPurchaseMenuOption();
 			} else {
+				for (String itemsPrint : selectedItems) {
+				System.out.println(itemsPrint);
+				}
+				System.out.println("Your change is " + customer.getCurrentBalance());
 				System.exit(0);
+				
 			}
 		}
 	}
