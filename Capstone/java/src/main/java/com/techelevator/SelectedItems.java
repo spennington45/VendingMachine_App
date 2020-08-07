@@ -20,7 +20,7 @@ public class SelectedItems {
 	private static final String [] SELECT_CHIP = {"Potato Crisps", "Stackers", "Grain Waves", "Cloud Popcorn", "Back"};
 	
 	
-	public List <MasterItemType> getInventory() throws FileNotFoundException {
+	public void getInventory() throws FileNotFoundException {
 		File products = new File("vendingmachine.csv");
 		if (products.exists()) {
 			try (Scanner fileScanner = new Scanner(products)) {
@@ -37,21 +37,22 @@ public class SelectedItems {
 							readList.add(candy);
 							System.out.println(candy);
 						} else if (item[3].equals("Drink")) {
-							Chip drink = new Chip(item[0], item[1], y);	
+							Drink drink = new Drink(item[0], item[1], y);	
 							readList.add(drink);
 							System.out.println(drink);
 						} else if (item[3].equals("Gum")) {
-							Chip gum = new Chip(item[0], item[1], y);
+							Gum gum = new Gum(item[0], item[1], y);
 							readList.add(gum);
 							System.out.println(gum);
 						}
 					}
 				}
 			} 
-		return readList;
 		}
 		
-	
+	public List <MasterItemType> getInventoryList() {
+		return readList;
+	}
 	
 	public void addItemToPerchase(String str) {
 		System.out.println(str);
@@ -60,8 +61,12 @@ public class SelectedItems {
 					if (i.getName().equals(str)) {
 						total.add(i.getPrice());
 						selectedItems.add(i.getName());
+						System.out.println(i.getQuantity());
+						//i.getQuantity();
+						//i.quantityReduceBy1();
 						System.out.println(total);
 						System.out.println(selectedItems.toString());
+						System.out.println(i.getQuantity());
 				}
 			}if (str.equals("Candy")) {
 				System.out.println("Do stuff");

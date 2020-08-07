@@ -43,5 +43,9 @@ public class Candy implements MasterItemType {
 	public BigDecimal getPrice() {
 		return item.get(name);
 	}
+	
+	public void quantityReduceBy1() {
+		 quantity--;
+	}
 
 }
