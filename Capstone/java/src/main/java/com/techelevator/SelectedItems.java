@@ -77,6 +77,7 @@ public class SelectedItems {
 	public String addItemToPerchase(String str) {
 		for (MasterItemType i : this.readList) {
 			if (i.getName().equals(str)) {
+				if (i.getQuantity() = 0)
 				total = total.add(i.getPrice());
 				selectedItems = (i.getName());
 				i.getQuantity();
