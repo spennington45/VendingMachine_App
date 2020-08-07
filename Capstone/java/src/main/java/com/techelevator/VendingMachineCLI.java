@@ -23,15 +23,14 @@ public class VendingMachineCLI {
 	private static final String [] PURCHESE_MENU = {"Feed Money", "Select Product", "Finish Transaction", "Back"};
 	private static final String [] MONEY_MENU = {"$1.00", "$2.00", "$5.00", "$10.00", "Back"};
 	private static final String [] SELECT_PRODUCT = {"Chip", "Candy", "Drink", "Gum", "Back"};
-	private static final String [] SELECT_CHIP = {"Potato Crisps", "Stackers", "Grain Waves", "Cloud Popcorn", "Back"};
-	private static final String [] SELECT_CANDY = {"Moonpie", "Cowtales", "Wonka Bar", "Crunchie", "Back"};
-	private static final String [] SELECT_DRINK = {"Cola", "Dr. Salt", "Mountain Melter", "Heavy", "Back"};
-	private static final String [] SELECT_GUM = {"U-Chews", "Little League Chew", "Chiclets", "Triplemint", "Back"};
+	private static  Object[] SELECT_CHIP;
+	private static  Object[] SELECT_CANDY;
+	private static  Object[] SELECT_DRINK;
+	private static  Object[] SELECT_GUM;
 	private Menu menu;
 	private CustomerBalance customer = new CustomerBalance();
 	private List <String> selectedItems = new ArrayList <String> ();
 	static List <MasterItemType> inventory = new ArrayList <MasterItemType> ();
-	static SelectedItems item;
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -70,6 +69,7 @@ public class VendingMachineCLI {
 
 
 	private void selectProduct() throws FileNotFoundException {
+		SelectedItems item = new SelectedItems();
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 		System.out.println("Please enter the code for the item you wish to perchis");
 		String itemSelected = "";
@@ -128,7 +128,12 @@ public class VendingMachineCLI {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
+		SelectedItems item = new SelectedItems();
 		item.getInventory();
+		SELECT_CHIP = item.getChipList();
+		SELECT_CANDY = item.getCandyList();
+		SELECT_DRINK = item.getDrinkList();
+		SELECT_GUM = item.getGumList();
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 		cli.run();
