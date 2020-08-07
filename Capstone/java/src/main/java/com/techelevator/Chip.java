@@ -40,7 +40,8 @@ public class Chip implements MasterItemType {
 	}
 
 	@Override
-	public BigDecimal getPrice() {
+	public BigDecimal getPrice(String name) {
+		
 		return item.get(name);
 	}
 	

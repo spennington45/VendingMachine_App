@@ -39,13 +39,15 @@ public class Candy implements MasterItemType {
 		return quantity;
 	}
 
-	@Override
-	public BigDecimal getPrice() {
-		return item.get(name);
-	}
 	
 	public void quantityReduceBy1() {
 		 quantity--;
+	}
+
+	@Override
+	public BigDecimal getPrice(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

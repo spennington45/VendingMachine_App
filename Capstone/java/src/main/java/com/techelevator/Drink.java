@@ -40,13 +40,14 @@ public class Drink implements MasterItemType {
 			return quantity;
 		}
 
-		@Override
-		public BigDecimal getPrice() {
-			// TODO Auto-generated method stub
-			return item.get(name);
-		}
 		
 		public void quantityReduceBy1() {
 			 quantity--;
+		}
+
+		@Override
+		public BigDecimal getPrice(String name) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 }

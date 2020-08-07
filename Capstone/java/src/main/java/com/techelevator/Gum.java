@@ -41,7 +41,7 @@ public class Gum implements MasterItemType {
 	}
 
 	@Override
-	public BigDecimal getPrice() {
+	public BigDecimal getPrice(String name) {
 		// TODO Auto-generated method stub
 		return item.get(name);
 	}
