@@ -77,11 +77,13 @@ public class SelectedItems {
 	public String addItemToPerchase(String str) {
 		for (MasterItemType i : this.readList) {
 			if (i.getName().equals(str)) {
-				if (i.getQuantity() = 0)
-				total = total.add(i.getPrice());
-				selectedItems = (i.getName());
-				i.getQuantity();
-				i.quantityReduceBy1();
+				if (i.getQuantity() == 0) {
+					System.out.println("Sorry " + str + " is out of stock!");
+				} else {
+					total = total.add(i.getPrice());
+					selectedItems = (i.getName());
+					i.quantityReduceBy1();
+				}
 			}
 		}		
 		return selectedItems;

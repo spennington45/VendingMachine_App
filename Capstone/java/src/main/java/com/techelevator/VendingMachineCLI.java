@@ -107,11 +107,14 @@ public class VendingMachineCLI {
 
 	private void finishTransaction() throws FileNotFoundException {
 		System.out.flush();  
-		CustomerBalance finalBalance = new CustomerBalance();
-		customer.getCurrentBalance();
-        System.out.println("$" + customer.getCurrentBalance());
-    	System.out.flush();  
-        run();
+		if (customer.getCurrentBalance().compareTo(item.getTotal()) == -1) {
+			System.out.println("Sorry you do not have enough money to finish this transaction. Please add more money.");
+			processPurchaseMenuOption();
+		} else {
+			customer.subFromCurrentBalance(item.getTotal());
+			System.out.println(customer);
+			run();
+		}
 		
 	}
 
