@@ -30,6 +30,8 @@ public class VendingMachineCLI {
 	private Menu menu;
 	private CustomerBalance customer = new CustomerBalance();
 	private List <String> selectedItems = new ArrayList <String> ();
+	static List <MasterItemType> inventory = new ArrayList <MasterItemType> ();
+	static SelectedItems item;
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -68,10 +70,8 @@ public class VendingMachineCLI {
 
 
 	private void selectProduct() throws FileNotFoundException {
-		SelectedItems item = new SelectedItems();
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 		System.out.println("Please enter the code for the item you wish to perchis");
-		item.getInventory();
 		String itemSelected = "";
 		String chipSelected = "";
 		String candySelected = "";
@@ -86,17 +86,17 @@ public class VendingMachineCLI {
 				}
 			} else if (itemSelected.equals("Candy")) {
 				candySelected = (String) menu.getChoiceFromOptions(SELECT_CANDY);
-				if (!chipSelected.contentEquals("Back")) {
+				if (!candySelected.contentEquals("Back")) {
 					item.addItemToPerchase(chipSelected);
 				}
 			} else if (itemSelected.equals("Drink")) {
 				drinkSelected = (String) menu.getChoiceFromOptions(SELECT_DRINK);
-				if (!chipSelected.contentEquals("Back")) {
+				if (!drinkSelected.contentEquals("Back")) {
 					item.addItemToPerchase(chipSelected);
 				}
 			} else if (itemSelected.equals("Gum")) {
 				gumSelected = (String) menu.getChoiceFromOptions(SELECT_GUM);
-				if (!chipSelected.contentEquals("Back")) {
+				if (!gumSelected.contentEquals("Back")) {
 					item.addItemToPerchase(chipSelected);
 				}
 			}
@@ -128,6 +128,7 @@ public class VendingMachineCLI {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
+		item.getInventory();
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 		cli.run();

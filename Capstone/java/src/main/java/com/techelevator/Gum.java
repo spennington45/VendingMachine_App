@@ -11,7 +11,7 @@ public class Gum implements MasterItemType {
 	private int quantity = 5;
 	private String name;
 
-	public Gum(Map<String, BigDecimal> item, String slot, String name, BigDecimal price) {
+	public Gum(String slot, String name, BigDecimal price) {
 		this.slot = slot;
 		this.item.put(name,price);
 		this.name = name;
@@ -44,6 +44,10 @@ public class Gum implements MasterItemType {
 	public BigDecimal getPrice() {
 		// TODO Auto-generated method stub
 		return item.get(name);
+	}
+	
+	public void quantityReduceBy1() {
+		 quantity--;
 	}
 
 }
