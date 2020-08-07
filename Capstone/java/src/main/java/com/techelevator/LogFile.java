@@ -26,6 +26,7 @@ public class LogFile {
 	}
 
 	public void receipt(String eventTask) {
+		
 		try {
 			PrintWriter writer = new PrintWriter(new FileOutputStream(log,true));
 			writer.append(eventTask);
