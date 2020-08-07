@@ -15,9 +15,10 @@ public class SelectedItems {
 	private List <String> selectedItems = new ArrayList <String> ();
 	private List <String> inventory = new ArrayList <String> ();
 	List <MasterItemType> readList = new ArrayList <MasterItemType> ();
-	private Menu menu;
-	private static final String [] SELECT_PRODUCT = {"Chips", "Candy", "Drinks", "Gum", "Back"};
-	private static final String [] SELECT_CHIP = {"Potato Crisps", "Stackers", "Grain Waves", "Cloud Popcorn", "Back"};
+	List <String> chipList = new ArrayList <String>();
+	List <String> candyList = new ArrayList <String>();
+	List <String> drinkList = new ArrayList <String>();
+	List <String> gumList = new ArrayList <String>();
 	
 	
 	public void getInventory() throws FileNotFoundException {
@@ -32,27 +33,43 @@ public class SelectedItems {
 						if (item[3].equals("Chip")) {
 							Chip chip = new Chip(item[0], item[1], y);	
 							readList.add(chip);
-							System.out.println(chip);
+							chipList.add(item[1]);
 						} else if (item[3].equals("Candy")) {
 							Candy candy = new Candy(item[0], item[1], y);
 							readList.add(candy);
-							System.out.println(candy);
+							candyList.add(item[1]);
 						} else if (item[3].equals("Drink")) {
 							Drink drink = new Drink(item[0], item[1], y);	
 							readList.add(drink);
-							System.out.println(drink);
+							drinkList.add(item[1]);
 						} else if (item[3].equals("Gum")) {
 							Gum gum = new Gum(item[0], item[1], y);
 							readList.add(gum);
-							System.out.println(gum);
+							gumList.add(item[1]);
 						}
 					}
 				}
 			} 
+		chipList.add("Back");
+		candyList.add("Back");
+		drinkList.add("Back");
+		gumList.add("Back");
 		}
 		
 	public List <MasterItemType> getInventoryList() {
 		return readList;
+	}
+	public Object[] getChipList() {
+		return chipList.toArray();
+	}
+	public Object[] getCandyList() {
+		return candyList.toArray();
+	}
+	public Object[] getDrinkList() {
+		return drinkList.toArray();
+	}
+	public Object[] getGumList() {
+		return gumList.toArray();
 	}
 	
 	public void addItemToPerchase(String str) {
