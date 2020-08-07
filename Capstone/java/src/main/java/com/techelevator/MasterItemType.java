@@ -8,7 +8,7 @@ public interface MasterItemType {
 	public String getName();
 	public String getSlot();
 	public int getQuantity();
-	public BigDecimal getPrice(String name);
+	public BigDecimal getPrice();
 	public void quantityReduceBy1();
 	
 }

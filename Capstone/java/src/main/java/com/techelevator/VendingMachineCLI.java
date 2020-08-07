@@ -83,25 +83,26 @@ public class VendingMachineCLI {
 			if (itemSelected.equals("Chip")) {
 				chipSelected = (String) menu.getChoiceFromOptions(SELECT_CHIP);
 				if (!chipSelected.contentEquals("Back")) {
-					item.addItemToPerchase(chipSelected);
+					selectedItems.add(item.addItemToPerchase(chipSelected));
 				}
 			} else if (itemSelected.equals("Candy")) {
 				candySelected = (String) menu.getChoiceFromOptions(SELECT_CANDY);
 				if (!candySelected.contentEquals("Back")) {
-					item.addItemToPerchase(candySelected);
+					selectedItems.add(item.addItemToPerchase(candySelected));
 				}
 			} else if (itemSelected.equals("Drink")) {
 				drinkSelected = (String) menu.getChoiceFromOptions(SELECT_DRINK);
 				if (!drinkSelected.contentEquals("Back")) {
-					item.addItemToPerchase(drinkSelected);
+					selectedItems.add(item.addItemToPerchase(drinkSelected));
 				}
 			} else if (itemSelected.equals("Gum")) {
 				gumSelected = (String) menu.getChoiceFromOptions(SELECT_GUM);
 				if (!gumSelected.contentEquals("Back")) {
-					item.addItemToPerchase(gumSelected);
+					selectedItems.add(item.addItemToPerchase(gumSelected));
 				}
 			}
 		}
+		System.out.println(selectedItems.toString());
 	}
 
 	private void finishTransaction() throws FileNotFoundException {

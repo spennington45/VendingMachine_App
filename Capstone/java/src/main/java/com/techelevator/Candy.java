@@ -8,10 +8,10 @@ public class Candy implements MasterItemType {
 
 	@Override
 	public String toString() {
-		return "Candy [item=" + item + ", slot=" + slot + ", quantity=" + quantity + ", name=" + name + "]";
+		return "Candy [item=" + name + ", slot=" + slot + ", quantity=" + quantity + ", name=" + name + "]";
 	}
 
-	private Map <String, BigDecimal> item = new HashMap <String, BigDecimal> ();
+	private BigDecimal price;
 	private String slot;
 	private int quantity = 5;
 	private String name;
@@ -20,7 +20,7 @@ public class Candy implements MasterItemType {
 
 	public Candy(String slot, String name, BigDecimal price) {
 		this.slot = slot;
-		this.item.put(name,price);
+		this.price = price;
 		this.name = name;
 	}
 
@@ -45,8 +45,8 @@ public class Candy implements MasterItemType {
 	}
 
 	@Override
-	public BigDecimal getPrice(String name) {
-		return item.get(name);
+	public BigDecimal getPrice() {
+		return this.price;
 	}
 
 }

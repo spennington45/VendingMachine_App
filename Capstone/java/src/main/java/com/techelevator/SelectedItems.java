@@ -12,7 +12,7 @@ import com.techelevator.view.Menu;
 public class SelectedItems {
 
 	private BigDecimal total = new BigDecimal(0.00);
-	private List <String> selectedItems = new ArrayList <String> ();
+	private String selectedItems = "";
 	private List <String> inventory = new ArrayList <String> ();
 	List <MasterItemType> readList = new ArrayList <MasterItemType> ();
 	List <String> chipList = new ArrayList <String>();
@@ -74,19 +74,16 @@ public class SelectedItems {
 		return gumList.toArray();
 	}
 	
-	public void addItemToPerchase(String str) {
+	public String addItemToPerchase(String str) {
 		for (MasterItemType i : this.readList) {
 			if (i.getName().equals(str)) {
-				total.add(i.getPrice(str));
-				selectedItems.add(i.getName());
-				System.out.println(i.getQuantity());
+				total = total.add(i.getPrice());
+				selectedItems = (i.getName());
 				i.getQuantity();
 				i.quantityReduceBy1();
-				System.out.println(total);
-				System.out.println(selectedItems.toString());
-				System.out.println(i.getQuantity());
 			}
-		}				
+		}		
+		return selectedItems;
 	}
 	
 	
