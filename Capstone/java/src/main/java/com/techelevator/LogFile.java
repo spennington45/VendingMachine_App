@@ -25,11 +25,11 @@ public class LogFile {
 
 	}
 
-	public void receipt(String eventTask) {
+	public void logWriter(String eventTask) {
 		
 		try {
 			PrintWriter writer = new PrintWriter(new FileOutputStream(log,true));
-			writer.append(eventTask);
+			writer.append(eventTask + "\n");
 			writer.flush();
 			writer.close();
 		}catch (IOException e) {

@@ -13,8 +13,7 @@ public class SelectedItems {
 
 	private BigDecimal total = new BigDecimal(0.00);
 	private String selectedItems = "";
-	private List <String> inventory = new ArrayList <String> ();
-	List <MasterItemType> readList = new ArrayList <MasterItemType> ();
+	List <MasterItemType> inventory = new ArrayList <MasterItemType> ();
 	List <String> chipList = new ArrayList <String>();
 	List <String> candyList = new ArrayList <String>();
 	List <String> drinkList = new ArrayList <String>();
@@ -31,27 +30,24 @@ public class SelectedItems {
 						BigDecimal y = BigDecimal.valueOf(Double.parseDouble(item[2]));
 						if (item[3].equals("Chip")) {
 							Chip chip = new Chip(item[0], item[1], y);	
-							readList.add(chip);
+							inventory.add(chip);
 							chipList.add(item[1]);
 						} else if (item[3].equals("Candy")) {
 							Candy candy = new Candy(item[0], item[1], y);
-							readList.add(candy);
+							inventory.add(candy);
 							candyList.add(item[1]);
 						} else if (item[3].equals("Drink")) {
 							Drink drink = new Drink(item[0], item[1], y);	
-							readList.add(drink);
+							inventory.add(drink);
 							drinkList.add(item[1]);
 						} else if (item[3].equals("Gum")) {
 							Gum gum = new Gum(item[0], item[1], y);
-							readList.add(gum);
+							inventory.add(gum);
 							gumList.add(item[1]);
 						}
 					}
-				
 				}
-		
 			}
-		System.out.println(readList.size());
 		chipList.add("Back");
 		candyList.add("Back");
 		drinkList.add("Back");
@@ -59,7 +55,7 @@ public class SelectedItems {
 		}
 		
 	public List <MasterItemType> getInventoryList() {
-		return readList;
+		return inventory;
 	}
 	public Object[] getChipList() {
 		return chipList.toArray();
@@ -75,18 +71,28 @@ public class SelectedItems {
 	}
 	
 	public String addItemToPerchase(String str) {
-		for (MasterItemType i : this.readList) {
+		for (MasterItemType i : this.inventory) {
 			if (i.getName().equals(str)) {
 				if (i.getQuantity() == 0) {
 					System.out.println("Sorry " + str + " is out of stock!");
 				} else {
+					if (chipList.contains(i.getName())) {
+						System.out.println("Crunch Crunch, Yum!");
+					} else if (candyList.contains(i.getName())) {
+						System.out.println("Munch Munch, Yum!");
+					} else if (drinkList.contains(i.getName())) {
+						System.out.println("Glug Glug, Yum!");
+					} else if (gumList.contains(i.getName())) {
+						System.out.println("Chew Chew, Yum!");
+					}
 					total = total.add(i.getPrice());
 					selectedItems = (i.getName());
 					i.quantityReduceBy1();
+					return selectedItems;
 				}
 			}
-		}		
-		return selectedItems;
+		}
+		return "";
 	}
 	
 	

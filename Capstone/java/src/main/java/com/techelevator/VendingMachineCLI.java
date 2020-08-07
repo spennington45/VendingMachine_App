@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -30,9 +31,10 @@ public class VendingMachineCLI {
 	private Menu menu;
 	private CustomerBalance customer = new CustomerBalance();
 	private List <String> selectedItems = new ArrayList <String> ();
+	private List <String> perchesedItems = new ArrayList <String> ();
 	static List <MasterItemType> inventory = new ArrayList <MasterItemType> ();
 	static SelectedItems item = new SelectedItems();
-	public BigDecimal x = new BigDecimal(0.00);
+	public BigDecimal money = new BigDecimal(0.00);
 	LogFile log = new LogFile();
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -40,9 +42,6 @@ public class VendingMachineCLI {
 
 	public void run() throws FileNotFoundException {
 		while (true) {
-			
-			log.receipt("Starting VEND-O-MATIC 9000");
-
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
@@ -52,12 +51,18 @@ public class VendingMachineCLI {
 				System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 				processPurchaseMenuOption();
 			} else {
-				for (String itemsPrint : selectedItems) {
+				for (String itemsPrint : perchesedItems) {
 				System.out.println(itemsPrint);
 				}
 				System.out.println("Your change is " + customer.getCurrentBalance());
+				double tempCoins = Double.valueOf(customer.getCurrentBalance().toString())*100;
+				int coins = (int) tempCoins;
+				int quarters = coins/25;
+				int dimes = coins%25/10;
+				int nickels = coins%25%10/5;
+				System.out.println("quarters: " + quarters + " dimes: " + dimes + " nickels: " + nickels);
+				log.logWriter("GIVE CHANGE: $" + customer.getCurrentBalance().toString() + " $0.00");
 				System.exit(0);
-				
 			}
 		}
 	}
@@ -110,7 +115,6 @@ public class VendingMachineCLI {
 				}
 			}
 		}
-		System.out.println(selectedItems.toString());
 	}
 
 	private void finishTransaction() throws FileNotFoundException {
@@ -119,11 +123,15 @@ public class VendingMachineCLI {
 			System.out.println("Sorry you do not have enough money to finish this transaction. Please add more money.");
 			processPurchaseMenuOption();
 		} else {
+			String oldBalance = customer.getCurrentBalance().toString();
 			customer.subFromCurrentBalance(item.getTotal());
+			perchesedItems.addAll(selectedItems);
+			perchesedItems.removeAll(Arrays.asList("", null));
+			selectedItems.clear();
 			System.out.println(customer);
+			log.logWriter("Items perchesed: " + perchesedItems + " $" + oldBalance + " $" + customer.getCurrentBalance().toString());
 			run();
 		}
-		
 	}
 
 
@@ -132,9 +140,10 @@ public class VendingMachineCLI {
 		while (!feedOptions.equals("Back")) {
 			feedOptions = (String) menu.getChoiceFromOptions(MONEY_MENU);	
 			if (!feedOptions.equals("Back")) {
-				x = BigDecimal.valueOf(Double.parseDouble(feedOptions.replace("$", "")));
-				customer.addToCurrentBalance(x.setScale(2));
-				System.out.println("Current Money Provided: $" + customer.getCurrentBalance());				
+				money = BigDecimal.valueOf(Double.parseDouble(feedOptions.replace("$", "")));
+				customer.addToCurrentBalance(money.setScale(2));
+				System.out.println("Current Money Provided: $" + customer.getCurrentBalance());		
+				log.logWriter("FEED MONEY: " + feedOptions + " $" + customer.getCurrentBalance().toString());
 			}
 		}
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
@@ -166,9 +175,6 @@ public class VendingMachineCLI {
 		for (String i : readList) {
 			System.out.println(i);
 		}
-		
 	}
-	
-
 	
 }

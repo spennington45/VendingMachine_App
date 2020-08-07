@@ -7,7 +7,6 @@ import java.util.Locale;
 public class CustomerBalance {
 	
 		private BigDecimal currentBalance =  new BigDecimal(0);
-		private BigDecimal zeroBalance = new BigDecimal(0);
 
 		public BigDecimal getCurrentBalance() {
 			return currentBalance;
@@ -21,10 +20,6 @@ public class CustomerBalance {
 			if (subAmount.doubleValue() <= currentBalance.doubleValue()) {
 				currentBalance = currentBalance.subtract(subAmount);
 			}
-		}
-
-		public void returnToZero() {
-		currentBalance = zeroBalance;
 		}
 
 		public String toString() {
