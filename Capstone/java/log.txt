@@ -49,3 +49,12 @@ FEED MONEY: $10.00 $20.00
 FEED MONEY: $10.00 $30.00
 Items perchesed: [Potato Crisps, Cowtales, Heavy, U-Chews] $30.00 $23.10
 GIVE CHANGE: $23.10 $0.00
+FEED MONEY: $10.00 $10.00
+Items perchesed: [Cloud Popcorn] $10.00 $6.35
+GIVE CHANGE: $6.35 $0.00
+20200808_141118FEED MONEY: $10.00 $10.00
+20200808_141125Items perchesed: [Potato Crisps] $10.00 $6.95
+20200808_141127GIVE CHANGE: $6.95 $0.00
+2020/08/08 14:15:22 FEED MONEY: $10.00 $10.00
+2020/08/08 14:15:30 Items perchesed: [Cowtales] $10.00 $8.50
+2020/08/08 14:15:31 GIVE CHANGE: $8.50 $0.00

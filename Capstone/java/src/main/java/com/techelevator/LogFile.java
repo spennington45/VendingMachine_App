@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class LogFile {
 	File log = new File("log.txt");
@@ -19,9 +21,11 @@ public class LogFile {
 
 	public void logWriter(String eventTask) {
 		
+		String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ").format(Calendar.getInstance().getTime());
+		
 		try {
 			PrintWriter writer = new PrintWriter(new FileOutputStream(log,true));
-			writer.append(eventTask + "\n");
+			writer.append(timeStamp + eventTask + "\n");
 			writer.flush();
 			writer.close();
 		}catch (IOException e) {
