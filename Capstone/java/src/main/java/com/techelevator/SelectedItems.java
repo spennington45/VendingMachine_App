@@ -1,13 +1,10 @@
 package com.techelevator;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import com.techelevator.view.Menu;
 
 public class SelectedItems {
 
@@ -18,7 +15,6 @@ public class SelectedItems {
 	List <String> candyList = new ArrayList <String>();
 	List <String> drinkList = new ArrayList <String>();
 	List <String> gumList = new ArrayList <String>();
-	
 	
 	public void getInventory() throws FileNotFoundException {
 		File products = new File("vendingmachine.csv");
@@ -94,7 +90,6 @@ public class SelectedItems {
 		}
 		return "";
 	}
-	
 	
 	public BigDecimal getTotal() {
 		return this.total;

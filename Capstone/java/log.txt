@@ -44,3 +44,8 @@ GIVE CHANGE: $3.10 $0.00
 FEED MONEY: $10.00 $10.00
 Items perchesed: [Potato Crisps, Dr. Salt] $10.00 $5.45
 GIVE CHANGE: $5.45 $0.00
+FEED MONEY: $10.00 $10.00
+FEED MONEY: $10.00 $20.00
+FEED MONEY: $10.00 $30.00
+Items perchesed: [Potato Crisps, Cowtales, Heavy, U-Chews] $30.00 $23.10
+GIVE CHANGE: $23.10 $0.00

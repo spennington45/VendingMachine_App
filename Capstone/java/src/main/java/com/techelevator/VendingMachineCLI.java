@@ -1,16 +1,11 @@
 package com.techelevator;
-
-import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
-
 import com.techelevator.view.Menu;
 
 public class VendingMachineCLI {
@@ -18,9 +13,7 @@ public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
-
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
-
 	private static final String [] PURCHESE_MENU = {"Feed Money", "Select Product", "Finish Transaction", "Back"};
 	private static final String [] MONEY_MENU = {"$1.00", "$2.00", "$5.00", "$10.00", "Back"};
 	private static final String [] SELECT_PRODUCT = {"Chip", "Candy", "Drink", "Gum", "Back"};
@@ -82,10 +75,9 @@ public class VendingMachineCLI {
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 	}
 
-
 	private void selectProduct() throws FileNotFoundException {
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
-		System.out.println("Please enter the code for the item you wish to perchis");
+		System.out.println("Please enter the code for the item you wish to purchase");
 		String itemSelected = "";
 		String chipSelected = "";
 		String candySelected = "";
