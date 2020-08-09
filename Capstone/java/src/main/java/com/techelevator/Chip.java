@@ -1,8 +1,7 @@
 package com.techelevator;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class Chip implements MasterItemType {
 

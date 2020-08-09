@@ -1,8 +1,7 @@
 package com.techelevator;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class Drink implements MasterItemType {
 
@@ -24,19 +23,16 @@ public class Drink implements MasterItemType {
 
 		@Override
 		public String getName() {
-			// TODO Auto-generated method stub
 			return name;
 		}
 
 		@Override
 		public String getSlot() {
-			// TODO Auto-generated method stub
 			return slot;
 		}
 
 		@Override
 		public int getQuantity() {
-			// TODO Auto-generated method stub
 			return quantity;
 		}
 

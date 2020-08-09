@@ -1,7 +1,6 @@
 package com.techelevator;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class Gum implements MasterItemType {
 
@@ -18,7 +17,6 @@ public class Gum implements MasterItemType {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
@@ -29,13 +27,11 @@ public class Gum implements MasterItemType {
 
 	@Override
 	public String getSlot() {
-		// TODO Auto-generated method stub
 		return slot;
 	}
 
 	@Override
 	public int getQuantity() {
-		// TODO Auto-generated method stub
 		return quantity;
 	}
 
