@@ -16,7 +16,7 @@ public class SelectedItems {
 	List <String> drinkList = new ArrayList <String>();
 	List <String> gumList = new ArrayList <String>();
 	
-	public void getInventory() throws FileNotFoundException {
+	public int getInventory() throws FileNotFoundException {
 		File products = new File("vendingmachine.csv");
 		if (products.exists()) {
 			try (Scanner fileScanner = new Scanner(products)) {
@@ -48,6 +48,7 @@ public class SelectedItems {
 		candyList.add("Back");
 		drinkList.add("Back");
 		gumList.add("Back");
+		return inventory.size();
 		}
 		
 	public List <MasterItemType> getInventoryList() {
