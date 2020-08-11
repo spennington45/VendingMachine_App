@@ -1,0 +1,40 @@
+Group 8 Feedback
+
+1. Love the two level menu for selecting things!
+----------------------------------------------------------
+Please enter the code for the item you wish to purchase
+
+1) Chip
+2) Candy
+3) Drink
+4) Gum
+5) Back
+
+Please choose an option >>> 3
+
+1) Cola
+2) Dr. Salt
+3) Mountain Melter
+4) Heavy
+5) Back
+----------------------------------------------------------
+
+2. On the SelectedItems class, there is no need to pass the buck on the 
+exception for getInventory(). You can catch the FileNotFound at the end
+of the try with resources
+
+try (Scanner fileScanner = new Scanner(products)) {
+	while (fileScanner.hasNextLine()) {
+		// code	
+	}
+} catch (FileNotFoundException e) {
+	// code
+}
+
+3. The change functionality should be extracted to its own method, this 
+would make it easier to write tests against.
+
+4. You mean purchased right? :D 
+----------------------------------------------------------
+private List <String> perchesedItems = new ArrayList <String> ();
+----------------------------------------------------------
