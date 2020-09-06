@@ -33,7 +33,7 @@ public class VendingMachineCLI {
 		this.menu = menu;
 	}
 
-	public void run() throws FileNotFoundException {
+	public void run() {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
@@ -47,20 +47,24 @@ public class VendingMachineCLI {
 				for (String itemsPrint : perchesedItems) {
 				System.out.println(itemsPrint);
 				}
-				System.out.println("Your change is " + customer.getCurrentBalance());
-				double tempCoins = Double.valueOf(customer.getCurrentBalance().toString())*100;
-				int coins = (int) tempCoins;
-				int quarters = coins/25;
-				int dimes = coins%25/10;
-				int nickels = coins%25%10/5;
-				System.out.println("quarters: " + quarters + " dimes: " + dimes + " nickels: " + nickels);
-				log.logWriter("GIVE CHANGE: $" + customer.getCurrentBalance().toString() + " $0.00");
+				makeChange();
 				System.exit(0);
 			}
 		}
 	}
 
-	private void processPurchaseMenuOption() throws FileNotFoundException {
+	public void makeChange () {
+		System.out.println("Your change is " + customer.getCurrentBalance());
+		double tempCoins = Double.valueOf(customer.getCurrentBalance().toString())*100;
+		int coins = (int) tempCoins;
+		int quarters = coins/25;
+		int dimes = coins%25/10;
+		int nickels = coins%25%10/5;
+		System.out.println("quarters: " + quarters + " dimes: " + dimes + " nickels: " + nickels);
+		log.logWriter("GIVE CHANGE: $" + customer.getCurrentBalance().toString() + " $0.00");
+	}
+	
+	private void processPurchaseMenuOption() {
 		String purchaseMenuOption = "";
 		while (!purchaseMenuOption.equals("Back")) {
 			purchaseMenuOption = (String) menu.getChoiceFromOptions(PURCHESE_MENU);
@@ -75,7 +79,7 @@ public class VendingMachineCLI {
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 	}
 
-	private void selectProduct() throws FileNotFoundException {
+	private void selectProduct() {
 		System.out.println("Current Money Provided: $" + customer.getCurrentBalance());
 		System.out.println("Please enter the code for the item you wish to purchase");
 		String itemSelected = "";
@@ -109,7 +113,7 @@ public class VendingMachineCLI {
 		}
 	}
 
-	private void finishTransaction() throws FileNotFoundException {
+	private void finishTransaction() {
 		System.out.flush();  
 		if (customer.getCurrentBalance().compareTo(item.getTotal()) == -1) {
 			System.out.println("Sorry you do not have enough money to finish this transaction. Please add more money.");
@@ -153,7 +157,7 @@ public class VendingMachineCLI {
 		cli.run();
 	}
 	
-	public static void readProducts() throws FileNotFoundException {
+	public static void readProducts() {
 		File products = new File("vendingmachine.csv");
 		List <String> readList = new ArrayList <String> ();
 		if (products.exists()) {
@@ -162,7 +166,8 @@ public class VendingMachineCLI {
 				String items = fileScanner.nextLine();
 				readList.add(items);
 				}
-			} 
+			} catch (FileNotFoundException e) {
+			}
 		}
 		for (String i : readList) {
 			System.out.println(i);
